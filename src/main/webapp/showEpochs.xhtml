@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	
+	<ui:define name="content">
+	
+    <h:form>
+    
+     <h:dataTable value="#{epochBean.allEpochs}" var="item" border="3" cellspacing="3" cellpadding="3">
+      <f:facet name="header">#{msg.epochAllLabel}</f:facet>
+      
+      <h:column>
+        <f:facet name="header">#{msg.epochNameLabel}</f:facet>
+        #{item.name}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.epochDescriptionLabel}</f:facet>
+        #{item.description}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.epochStartDateLabel}</f:facet>
+        #{item.startDate}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.epochEndDateLabel}</f:facet>
+        #{item.endDate}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.epochTurningPointLabel}</f:facet>
+        #{item.turningPoint}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.action}</f:facet>
+        <h:commandLink value="#{msg.actionDelete}" action="#{epochBean.delEpoch}"/>
+      </h:column>
+      
+     </h:dataTable>
+    </h:form>
+      
+	</ui:define>
+	
+</ui:composition>

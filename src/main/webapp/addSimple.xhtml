@@ -4,20 +4,72 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/templates/default.xhtml">
+
 	<ui:define name="content">
-		<h:form id="personform">
+		<h:form id="heroForm">
 			<h:panelGrid columns="2">
 
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:inputText id="name" value="#{personBean.person.firstName}" />
+				<h:outputText value="#{msg.heroFirstNameLabel}" />
+				<h:inputText id="name" value="#{heroBean.hero.name}"
+					required="#{true}" />
 
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:inputText id="yob" value="#{personBean.person.pin}" />
+				<h:outputText value="#{msg.heroLastNameLabel}" />
+				<h:inputText id="lname" value="#{heroBean.hero.lastName}"
+					required="#{true}" />
+
+				<h:outputText value="#{msg.heroBloodlineLabel}" />
+				<h:selectOneMenu id="bloodlines" value="#{heroBean.hero.bloodline}"
+					required="#{true}">
+					<f:selectItems value="#{bloodlineBean.allBloodlines}"
+						var="bloodline" itemValue="#{bloodline.name}"
+						itemLabel="#{bloodline.name}" />
+				</h:selectOneMenu>
+
+				<h:outputText value="#{msg.heroBirthSignLabel}" />
+				<h:selectOneMenu id="birthSigns" value="#{heroBean.hero.birthSign}">
+					<f:selectItem id="bs1" itemLabel="Balunarel" itemValue="Balunarel" />
+					<f:selectItem id="bs2" itemLabel="Rankshakku"
+						itemValue="Rankshakku" />
+					<f:selectItem id="bs3" itemLabel="Horicotrex"
+						itemValue="Horicotrex" />
+					<f:selectItem id="bs4" itemLabel="Midrangu'Nai"
+						itemValue="Midrangu'Nai" />
+					<f:selectItem id="bs5" itemLabel="Zaldranel" itemValue="Zaldranel" />
+					<f:selectItem id="bs6" itemLabel="Garll'Traxn"
+						itemValue="Garll'Traxn" />
+					<f:selectItem id="bs7" itemLabel="Alirez" itemValue="Alirez" />
+					<f:selectItem id="bs8" itemLabel="Tamarash" itemValue="Tamarash" />
+					<f:selectItem id="bs9" itemLabel="Lakoer" itemValue="Lakoer" />
+					<f:selectItem id="bs10" itemLabel="Choklatut" itemValue="Choklatut" />
+					<f:selectItem id="bs11" itemLabel="Valuron" itemValue="Valuron" />
+					<f:selectItem id="bs12" itemLabel="Arbahemri" itemValue="Arbahemri" />
+				</h:selectOneMenu>
+
+				<h:outputText value="#{msg.heroAlignmentLabel}" />
+				<h:selectOneMenu id="alignments" value="#{heroBean.hero.alignment}">
+					<f:selectItem id="g" itemLabel="Good" itemValue="1" />
+					<f:selectItem id="n" itemLabel="Neutral" itemValue="0" />
+					<f:selectItem id="b" itemLabel="Evil" itemValue="-1" />
+				</h:selectOneMenu>
+
+				<h:outputText value="#{msg.heroEpochOfBirthLabel}" />
+
+				<h:selectOneMenu id="epochs" value="#{heroBean.hero.epochOfBirth}"
+					required="#{true}">
+					<f:selectItems value="#{epochBean.allEpochs}" var="epoch"
+						itemValue="#{epoch.name}" itemLabel="#{epoch.name}" />
+				</h:selectOneMenu>
+
+
+				<h:outputText value="#{msg.heroMagicSchematicCodeLabel}" />
+				<h:inputText id="msc" value="#{heroBean.hero.magicSchematicCode}"
+					validator="#{heroBean.uniqueMSC}" required="#{true}">
+					<f:validator validatorId="mscValidator" />
+				</h:inputText>
+
 			</h:panelGrid>
-
-			<h:commandButton value="#{msg.personFormOKButton}"
-				action="#{personBean.addPerson}" />
-				
+			<h:commandButton value="#{msg.heroFormOKButton}"
+				action="#{heroBean.addHero}" />
 			<h:panelGrid>
 				<h:messages showDetail="#{true}" showSummary="#{false}" />
 			</h:panelGrid>

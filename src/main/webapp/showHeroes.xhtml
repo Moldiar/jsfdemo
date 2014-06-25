@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	
+	<ui:define name="content">
+	
+    <h:form>
+    
+     <h:dataTable value="#{heroBean.allHeroes}" var="item" border="3" cellspacing="3" cellpadding="3">
+      <f:facet name="header">#{msg.heroAllLabel}</f:facet>
+      
+      <h:column>
+        <f:facet name="header">#{msg.heroFirstNameLabel}</f:facet>
+        #{item.name}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.heroLastNameLabel}</f:facet>
+        #{item.lastName}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.heroBloodlineLabel}</f:facet>
+        #{item.bloodline}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.heroBirthSignLabel}</f:facet>
+        #{item.birthSign}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.heroAlignmentLabel}</f:facet>
+        <h:outputLabel value="Good" rendered="#{item.alignment==1}"/>
+        <h:outputLabel value="Evil" rendered="#{item.alignment==-1}"/>
+        <h:outputLabel value="Neutral" rendered="#{item.alignment==0}"/>
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.heroEpochOfBirthLabel}</f:facet>
+        #{item.epochOfBirth}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.heroMagicSchematicCodeLabel}</f:facet>
+        #{item.magicSchematicCode}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.action}</f:facet>
+        <h:commandLink value="#{msg.actionDelete}" action="#{heroBean.delHero}"/>
+      </h:column>
+      
+     </h:dataTable>
+    </h:form>
+      
+	</ui:define>
+	
+</ui:composition>

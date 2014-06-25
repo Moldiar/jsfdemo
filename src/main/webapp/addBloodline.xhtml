@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h:form id="bloodlineForm">
+			<h:panelGrid columns="2">
+
+				<h:outputText value="#{msg.bloodlineNameLabel}" />
+				<h:inputText id="name" value="#{bloodlineBean.bloodline.name}"
+					required="#{true}" />
+
+				<h:outputText value="#{msg.bloodlinePowerLabel}" />
+				<h:inputText id="power" value="#{bloodlineBean.bloodline.power}"
+					required="#{true}" />
+
+				<h:outputText value="#{msg.bloodlineHematexGeneLabel}" />
+				<h:inputText id="hematexGene"
+					value="#{bloodlineBean.bloodline.hematexGene}"
+					validator="#{bloodlineBean.uniqueHGS}" required="#{true}" />
+
+			</h:panelGrid>
+			<h:commandButton value="#{msg.heroFormOKButton}"
+				action="#{bloodlineBean.addBloodline}" />
+			<h:panelGrid>
+				<h:messages showDetail="#{true}" showSummary="#{false}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

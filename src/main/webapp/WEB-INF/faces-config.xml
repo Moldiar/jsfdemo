@@ -15,8 +15,7 @@
 		<message-bundle>com.example.jsfdemo.errormessages</message-bundle>
 
 		<locale-config>
-			<default-locale>pl</default-locale>
-			<supported-locale>pl</supported-locale>
+			<default-locale>en</default-locale>
 			<supported-locale>en</supported-locale>
 		</locale-config>
 
